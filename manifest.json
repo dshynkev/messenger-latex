@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "Messenger LaTeX",
+  "description": "Use LaTeX markup in Facebook Messenger",
+  "version": "0.1",
+  
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://cdnjs.cloudflare.com; object-src 'self'",
+  "content_scripts": [
+      {
+          "matches": ["https://www.facebook.com/messages/*"],
+          "js": [
+              "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"
+          ]
+      }
+  ],
+
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "https://www.facebook.com/messages/*"
+  ]
+}
