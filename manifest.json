@@ -22,9 +22,8 @@
     "tabs",
     "https://www.facebook.com/messages/*",
     "https://www.messenger.com/*",
-    "http://*/*",
     "webRequest",
     "webRequestBlocking"
   ],
-  "web_accessible_resources": ["MathJax/*"]
+  "web_accessible_resources": ["helper.js", "MathJax/*"]
 }
