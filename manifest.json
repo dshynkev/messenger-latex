@@ -11,7 +11,7 @@
 
   "content_scripts": [
       {
-          "matches": ["https://www.facebook.com/messages/*"],
+          "matches": ["https://www.facebook.com/messages/*", "https://www.messenger.com/*"],
           "js": [
               "main.js"
           ]
@@ -21,6 +21,7 @@
   "permissions": [
     "tabs",
     "https://www.facebook.com/messages/*",
+    "https://www.messenger.com/*",
     "http://*/*",
     "webRequest",
     "webRequestBlocking"
