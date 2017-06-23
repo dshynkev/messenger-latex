@@ -5,6 +5,10 @@
   "description": "Use LaTeX markup in Facebook Messenger",
   "version": "0.1",
   
+  "background": {
+    "scripts": ["background.js"]
+  },
+
   "content_scripts": [
       {
           "matches": ["https://www.facebook.com/messages/*"],
@@ -16,7 +20,10 @@
 
   "permissions": [
     "tabs",
-    "https://www.facebook.com/messages/*"
+    "https://www.facebook.com/messages/*",
+    "http://*/*",
+    "webRequest",
+    "webRequestBlocking"
   ],
   "web_accessible_resources": ["MathJax/*"]
 }
