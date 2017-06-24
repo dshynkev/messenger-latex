@@ -27,12 +27,12 @@
     // Inject png script 1
     var pngScript1 = document.createElement("script");
     pngScript1.type = "text/javascript";
-    pngScript1.src = "png.js"
+    pngScript1.src = chrome.extension.getURL("png.js");
     document.getElementsByTagName("body")[0].appendChild(pngScript1);
     // Inject png script 2
     var pngScript2 = document.createElement("script");
     pngScript2.type = "text/javascript";
-    pngScript2.src = "png2.js"
+    pngScript2.src = chrome.extension.getURL("png2.js");
     document.getElementsByTagName("body")[0].appendChild(pngScript2);
     //CAN BE COMMENTARIZED NOT TESTED IN MESSENGER
     
@@ -45,4 +45,3 @@
           }
     )
 })();
-
