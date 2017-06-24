@@ -3,7 +3,7 @@ window.addEventListener("message", function(event) {
     if (event.source != window)
         return;
 
-    // Forwarded from the backdround script
+    // Forwarded from the background script
     switch (event.data) {
     	case "sent":
     	case "switched":
@@ -15,11 +15,11 @@ window.addEventListener("message", function(event) {
     		MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
     		console.log("refreshed");
     		break;
-    	case "scrolled":
+    	case "scrolled": //Timeout ensures that the older messages are loaded before MathJax updates
     		setTimeout(function() {
     			MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
     			console.log("refreshed");
-    		});
+    		}, 500);
     		break;
     };
 }, false);
