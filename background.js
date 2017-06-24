@@ -6,6 +6,7 @@ var MSEND = "https://www.messenger.com/messaging/send/?dpr=1"
 var MRECEIVE = "https://www.messenger.com/ajax/mercury/delivery_receipts.php?dpr=1"
 var MSWITCH = "https://www.messenger.com/ajax/bz"
 var MSCROLL = "https://www.messenger.com/api/graphqlbatch/"
+var FTAB = "https://www.facebook.com/ajax/mercury/tabs_presence.php?dpr=1"
 
 // Request a refresh when the page changes
 chrome.webRequest.onCompleted.addListener(function(details) {
@@ -27,8 +28,10 @@ chrome.webRequest.onCompleted.addListener(function(details) {
             case MSCROLL:
                 chrome.tabs.sendMessage(tabs[0].id, "scrolled");
                 break;
+            case FTAB:
+                chrome.tabs.sendMessage(tabs[0].id, "tabbed");
+                break;
         }
-          chrome.tabs.sendMessage(tabs[0].id, "refresh");
     });
 }, {urls: [
     FSEND,
@@ -39,4 +42,5 @@ chrome.webRequest.onCompleted.addListener(function(details) {
     MSCROLL,
     MSWITCH,
     MSCROLL,
+    FTAB,
 ]});
