@@ -15,8 +15,8 @@ var Preview = {
     SwapBuffers: function () {
         var buffer = this.preview, preview = this.buffer;
         this.buffer = buffer; this.preview = preview;
-        buffer.style.visibility = "hidden"; buffer.style.position = "absolute";
-        preview.style.position = ""; preview.style.visibility = "";
+        buffer.style.display = "none";
+        preview.style.display = "";
     },
 
     Update: function () {
@@ -33,10 +33,9 @@ var Preview = {
         if (!text.match(/\$\$.*\$\$/) && !text.match(/\\\(.*\\\)/)) { // or if no TeX is found
             this.oldtext = text;
             // If the preview is visible
-            if (!this.preview.style.visibility) {
+            if (!this.preview.style.display) {
                 // Hide the preview
-                this.preview.style.visibility = "hidden";
-                this.preview.style.position = "absolute";
+                this.preview.style.display = "none";
             }
             return;
         }
@@ -62,16 +61,16 @@ Preview.callback.autoReset = true;
 document.getElementsByClassName("_kmc")[0].setAttribute("onkeyup", "Preview.Update()");
 
 // Output buffer and preview boxes
-var MathPreview = document.createElement("DIV");
+var MathPreview = document.createElement("div");
 MathPreview.id = "MathPreview";
 MathPreview.className = "tex2jax_process"
-MathPreview.style = "border:2px solid; border-radius:10px; border-color:#0084ff; padding:10px 15px 10px 15px; width:40%; margin:10px; position:absolute; visibility:hidden; z-index: 999";
+MathPreview.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #e0e0e0; background-color: #f0f0f0; border-radius: 10px; padding: 10px 20px 10px 20px; display:none";
 document.getElementsByClassName("_kmc")[0].appendChild(MathPreview);
 
-var MathBuffer = document.createElement("DIV");
+var MathBuffer = document.createElement("div");
 MathBuffer.id = "MathBuffer";
 MathBuffer.className = "tex2jax_process"
-MathBuffer.style = "border:2px solid; border-radius:10px; border-color:#0084ff; padding:10px 15px 10px 15px; width:40%; margin:10px; visibility:hidden; position:absolute; z-index: 999";
+MathBuffer.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #e0e0e0; background-color: #f0f0f0; border-radius: 10px; padding: 10px 20px 10px 20px; display:none";
 MathBuffer.textContent = " ";
 document.getElementsByClassName("_kmc")[0].appendChild(MathBuffer);
 
