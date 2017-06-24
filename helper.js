@@ -11,8 +11,7 @@ window.addEventListener("message", function(event) {
             Preview.Update();
             break;
         case "switched":
-            var input = document.querySelector("div._1mf")
-            input.classList.add("tex2jax_ignore");
+            document.getElementsByClassName("_1mf")[0].classList.add("tex2jax_ignore");
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
             console.log("refreshed");
             Preview.Update();
@@ -31,5 +30,4 @@ window.addEventListener("message", function(event) {
 }, false);
 
 //Ignore MathJax in input 
-var input = document.querySelector("div._1mf")
-input.classList.add("tex2jax_ignore");
+var input = document.getElementsByClassName("_1mf")[0].classList.add("tex2jax_ignore");

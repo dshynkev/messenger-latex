@@ -1,3 +1,4 @@
+//Live Preview
 var Preview = {
     delay: 150,   // delay after keystroke to update
 
@@ -61,6 +62,7 @@ var currentpage = window.location.href;
 if (currentpage.includes("facebook.com/messages")) chatClass="_kmc";
 else if (currentpage.includes("messenger.com")) chatClass="_kmc";
 else chatClass="_552h";
+console.log(chatClass);
 
 // Update on keystrokes 
 document.getElementsByClassName(chatClass)[0].setAttribute("onkeyup", "Preview.Update()");
@@ -69,15 +71,17 @@ document.getElementsByClassName(chatClass)[0].setAttribute("onkeyup", "Preview.U
 var MathPreview = document.createElement("div");
 MathPreview.id = "MathPreview";
 MathPreview.className = "tex2jax_process"
-MathPreview.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #e0e0e0; background-color: #f0f0f0; border-radius: 10px; padding: 10px 20px 10px 20px; display:none";
+MathPreview.style = "position:absolute; bottom: 115%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999";
 document.getElementsByClassName(chatClass)[0].appendChild(MathPreview);
 
 var MathBuffer = document.createElement("div");
 MathBuffer.id = "MathBuffer";
 MathBuffer.className = "tex2jax_process"
-MathBuffer.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #e0e0e0; background-color: #f0f0f0; border-radius: 10px; padding: 10px 20px 10px 20px; display:none";
+MathBuffer.style = "position:absolute; bottom: 115%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999";
 MathBuffer.textContent = " ";
 document.getElementsByClassName(chatClass)[0].appendChild(MathBuffer);
+
+console.log(document.getElementsByClassName(chatClass)[0]);
 
 // Initialze preview
 Preview.Init();
