@@ -13,7 +13,7 @@ window.addEventListener("message", function(event) {
 
 //Live Preview
 var Preview = {
-    delay: 100,   // delay after keystroke to update
+    delay: 1,   // delay after keystroke to update
 
     preview: null, buffer: null, 
     timeout: null, mjaxRunning: false,
@@ -22,6 +22,8 @@ var Preview = {
     Init: function () {
         this.preview = document.getElementById("MathPreview"); 
         this.buffer = document.getElementById("MathBuffer");
+        console.log(this.buffer);
+        console.log(this.preview);
     },
     
     // switch buffer and preview
@@ -40,8 +42,10 @@ var Preview = {
     CreatePreview: function () {
         Preview.timeout = null;
         if (this.mjaxRunning) return; // Return if MathJax is already running
-        var text = document.querySelectorAll(["data-text"]).value;
+        var temp = document.querySelector("div._1mf");
+        var text = temp.lastChild.lastChild.textContent;
         if (text === this.oldtext) return; // Return if text hasn't changed
+        console.log(text);
         this.buffer.innerHTML = this.oldtext = text;
         this.mjaxRunning = true;
         MathJax.Hub.Queue(
@@ -56,23 +60,24 @@ var Preview = {
     }
 };
 
-Preview.callback = MathJax.Callback(["CreatePreview",Preview]); // TODO: MathJax not defined
+Preview.callback = MathJax.Callback(["CreatePreview",Preview]);
 Preview.callback.autoReset = true; 
 
 // Update on keystrokes 
-var input = document.querySelectorAll(["data-text"]);
-input.onkeyup = "Preview.Update()";
+document.getElementsByClassName("_kmc")[0].setAttribute("onkeyup", "Preview.Update()"); //TODO: Change back to Update()
 
-
-// TODO: Create output boxes
+// Output buffer and preview boxes
 var MathPreview = document.createElement("DIV");
 MathPreview.id = "MathPreview";
 MathPreview.style = "border:1px solid; padding: 3px; width:50%; margin-top:5px";
-document.getElementsByClassName("__i_").appendChild(MathPreview);
-
+document.getElementsByClassName("_kmc")[0].appendChild(MathPreview);
 
 var MathBuffer = document.createElement("DIV");
 MathBuffer.id = "MathBuffer";
 MathBuffer.style = "border:1px solid; padding: 3px; width:50%; margin-top:5px; visibility:hidden; position:absolute; top:0; left: 0";
-document.getElementsByClassName("__i_").appendChild(MathBuffer);
+MathBuffer.textContent = " ";
+document.getElementsByClassName("_kmc")[0].appendChild(MathBuffer);
+console.log(MathBuffer);
 
+// Initialze preview
+Preview.Init();
