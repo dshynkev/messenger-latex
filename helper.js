@@ -24,6 +24,9 @@ window.addEventListener("message", function(event) {
     };
 }, false);
 
+//Ignore MathJax in input 
+var input = document.querySelector("div._1mf")
+input.className += " tex2jax_ignore";
 
 //Live Preview
 var Preview = {
@@ -91,11 +94,13 @@ document.getElementsByClassName("_kmc")[0].setAttribute("onkeyup", "Preview.Upda
 // Output buffer and preview boxes
 var MathPreview = document.createElement("DIV");
 MathPreview.id = "MathPreview";
+MathPreview.className = "tex2jax_process"
 MathPreview.style = "border:2px solid; border-radius:10px; border-color:#0084ff; padding:10px 15px 10px 15px; width:40%; margin:10px; position:absolute; z-index: 999";
 document.getElementsByClassName("_kmc")[0].appendChild(MathPreview);
 
 var MathBuffer = document.createElement("DIV");
 MathBuffer.id = "MathBuffer";
+MathBuffer.className = "tex2jax_process"
 MathBuffer.style = "border:2px solid; border-radius:10px; border-color:#0084ff; padding:10px 15px 10px 15px; width:40%; margin:10px; visibility:hidden; position:absolute; z-index: 999";
 MathBuffer.textContent = " ";
 document.getElementsByClassName("_kmc")[0].appendChild(MathBuffer);
