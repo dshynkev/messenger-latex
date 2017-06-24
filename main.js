@@ -7,7 +7,13 @@
     mathJaxScript.async = false;
     mathJaxScript.defer = true;
     document.getElementsByTagName("head")[0].appendChild(mathJaxScript);
-
+    // Inject preview script
+    var previewScript = document.createElement("script");
+    previewScript.type = "text/javascript";
+    previewScript.src = chrome.extension.getURL("livepreview.js");
+    previewScript.async = false;
+    previewScript.defer = true;
+    document.getElementsByTagName("head")[0].appendChild(previewScript);
     // Inject a helper script
     var helperScript = document.createElement("script");
     helperScript.type = "text/javascript";
@@ -16,13 +22,7 @@
     helperScript.defer = true;
     document.getElementsByTagName("head")[0].appendChild(helperScript);
     
-    // Inject preview script
-    var previewScript = document.createElement("script");
-    previewScript.type = "text/javascript";
-    previewScript.src = chrome.extension.getURL("livepreview.js");
-    previewScript.async = false;
-    previewScript.defer = true;
-    document.getElementsByTagName("head")[0].appendChild(previewScript);
+
     
     // Forward messages from the background script to the window 
     chrome.runtime.onMessage.addListener(

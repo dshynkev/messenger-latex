@@ -12,7 +12,9 @@ window.addEventListener("message", function(event) {
             break;
         case "switched":
             var input = document.querySelector("div._1mf")
-            input.classList.add("tex2jax_ignore");
+            if (input != null) {
+                input.classList.add("tex2jax_ignore");               
+            };
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
             console.log("refreshed");
             Preview.Update();
@@ -31,5 +33,8 @@ window.addEventListener("message", function(event) {
 }, false);
 
 //Ignore MathJax in input 
-var input = document.querySelector("div._1mf")
-input.classList.add("tex2jax_ignore");
+var currentpage = window.location.href;
+if (currentpage.includes("facebook.com/messages") || currentpage.includes("messenger.com")) {
+    var input = document.querySelector("div._1mf");
+    input.classList.add("tex2jax_ignore");
+};

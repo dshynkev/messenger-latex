@@ -65,21 +65,27 @@ else chatClass="_552h";
 console.log(chatClass);
 
 // Update on keystrokes 
-document.getElementsByClassName(chatClass)[0].setAttribute("onkeyup", "Preview.Update()");
+chat = document.getElementsByClassName(chatClass)[0];
+
 
 // Output buffer and preview boxes
 var MathPreview = document.createElement("div");
 MathPreview.id = "MathPreview";
 MathPreview.className = "tex2jax_process"
 MathPreview.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #e0e0e0; background-color: #f0f0f0; border-radius: 10px; padding: 10px 20px 10px 20px; display:none";
-document.getElementsByClassName(chatClass)[0].appendChild(MathPreview);
+
 
 var MathBuffer = document.createElement("div");
 MathBuffer.id = "MathBuffer";
 MathBuffer.className = "tex2jax_process"
 MathBuffer.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #e0e0e0; background-color: #f0f0f0; border-radius: 10px; padding: 10px 20px 10px 20px; display:none";
 MathBuffer.textContent = " ";
-document.getElementsByClassName(chatClass)[0].appendChild(MathBuffer);
+if (chat != null) {
+    chat.appendChild(MathPreview);
+    chat.appendChild(MathBuffer);
+    chat.setAttribute("onkeyup", "Preview.Update()");
+};
 
-// Initialze preview
+
+// Initialize preview
 Preview.Init();
