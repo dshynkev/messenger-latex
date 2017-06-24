@@ -11,7 +11,7 @@ window.addEventListener("message", function(event) {
             Preview.Update();
             break;
         case "switched":
-            var input = document.querySelector("div._1mf")
+            var input = document.getElementsByClassName("_1mf")[0]
             if (input != null) {
                 input.classList.add("tex2jax_ignore");               
             };
@@ -35,6 +35,5 @@ window.addEventListener("message", function(event) {
 //Ignore MathJax in input 
 var currentpage = window.location.href;
 if (currentpage.includes("facebook.com/messages") || currentpage.includes("messenger.com")) {
-    var input = document.querySelector("div._1mf");
-    input.classList.add("tex2jax_ignore");
+    var input = document.getElementsByClassName("_1mf")[0].classList.add("tex2jax_ignore");
 };

@@ -27,8 +27,8 @@ var Preview = {
     CreatePreview: function () {
         Preview.timeout = null;
         if (this.mjaxRunning) return; // Return if MathJax is already running
-        var input = document.querySelector("div._1mf").lastChild.lastChild;
-        var text = input.textContent;
+        var lines = document.querySelectorAll("div._1mf");
+        var text = lines[lines.length-1].lastChild.lastChild.textContent;
         if (text === this.oldtext) return; // Return if text hasn't changed
         if (!text.match(/\$\$.*\$\$/) && !text.match(/\\\(.*\\\)/)) { // or if no TeX is found
             this.oldtext = text;
@@ -72,13 +72,12 @@ chat = document.getElementsByClassName(chatClass)[0];
 var MathPreview = document.createElement("div");
 MathPreview.id = "MathPreview";
 MathPreview.className = "tex2jax_process"
-MathPreview.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #e0e0e0; background-color: #f0f0f0; border-radius: 10px; padding: 10px 20px 10px 20px; display:none";
-
+MathPreview.style = "position:absolute; bottom: 115%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999";
 
 var MathBuffer = document.createElement("div");
 MathBuffer.id = "MathBuffer";
 MathBuffer.className = "tex2jax_process"
-MathBuffer.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #e0e0e0; background-color: #f0f0f0; border-radius: 10px; padding: 10px 20px 10px 20px; display:none";
+MathBuffer.style = "position:absolute; bottom: 115%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999";
 MathBuffer.textContent = " ";
 if (chat != null) {
     chat.appendChild(MathPreview);
@@ -87,5 +86,7 @@ if (chat != null) {
 };
 
 
-// Initialize preview
+console.log(document.getElementsByClassName(chatClass)[0]);
+
+// Initialze preview
 Preview.Init();
