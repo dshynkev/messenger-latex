@@ -6,7 +6,7 @@
   "version": "0.1",
   
   "icons": {
-    "258": "icon.png"
+    "256": "icon.png"
   },
 
   "browser_action": {
@@ -19,7 +19,7 @@
 
   "content_scripts": [
       {
-          "matches": ["https://www.facebook.com/messages/*", "https://www.messenger.com/*"],
+          "matches": ["https://www.facebook.com/*", "https://www.messenger.com/*"],
           "js": [
               "main.js"
           ]
@@ -28,7 +28,7 @@
 
   "permissions": [
     "tabs",
-    "https://www.facebook.com/messages/*",
+    "https://www.facebook.com/*",
     "https://www.messenger.com/*",
     "webRequest",
     "webRequestBlocking"
