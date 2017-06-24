@@ -4,11 +4,13 @@ var Preview = {
 
     preview: null, buffer: null, 
     timeout: null, mjaxRunning: false,
-    oldText: null, 
+    oldText: null, savebutton: null,
+    savebuttonbuffer: null,
 
     Init: function () {
         this.preview = document.getElementById("MathPreview"); 
         this.buffer = document.getElementById("MathBuffer");
+        this.savebutton = document.getElementById("SavePNG");
     },
     
     // switch buffer and preview
@@ -17,6 +19,8 @@ var Preview = {
         this.buffer = buffer; this.preview = preview;
         buffer.style.display = "none";
         preview.style.display = "";
+        this.preview.appendChild(this.savebutton);
+        this.savebutton.style.display = "";
     },
 
     Update: function () {
@@ -36,6 +40,7 @@ var Preview = {
             if (!this.preview.style.display) {
                 // Hide the preview
                 this.preview.style.display = "none";
+                this.savebutton.style.display = "none";
             }
             return;
         }
@@ -67,26 +72,33 @@ console.log(chatClass);
 // Update on keystrokes 
 chat = document.getElementsByClassName(chatClass)[0];
 
-
-// Output buffer and preview boxes
+// Output buffer and preview boxes, button to save svg
 var MathPreview = document.createElement("div");
 MathPreview.id = "MathPreview";
 MathPreview.className = "tex2jax_process"
-MathPreview.style = "position:absolute; bottom: 115%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999";
+MathPreview.style = "position:absolute; bottom: 115%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 998";
 
 var MathBuffer = document.createElement("div");
 MathBuffer.id = "MathBuffer";
 MathBuffer.className = "tex2jax_process"
 MathBuffer.style = "position:absolute; bottom: 115%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999";
 MathBuffer.textContent = " ";
+
+var SavePNG = document.createElement("button");
+SavePNG.id = "SavePNG";
+SavePNG.style = "position: absolute; left: 115%; bottom: 0%; background-color: #f0f0f0; border: 1px solid #66757f; border-radius: 5px; padding: 7px; display: none; z-index: 999; font-size: 75%; text-align: center; box-shadow: 2px 2px 1px #ccc;";
+SavePNG.textContent = "Save PNG";
+chat.appendChild(SavePNG);
+
+// If the chat exists, then add the live components
 if (chat != null) {
     chat.appendChild(MathPreview);
     chat.appendChild(MathBuffer);
     chat.setAttribute("onkeyup", "Preview.Update()");
 };
 
-
-console.log(document.getElementsByClassName(chatClass)[0]);
-
 // Initialze preview
 Preview.Init();
+
+console.log(Preview.savebutton);
+console.log(document.getElementsByClassName(chatClass)[0]);
