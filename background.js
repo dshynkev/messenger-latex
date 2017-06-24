@@ -9,27 +9,27 @@ var MSCROLL = "https://www.messenger.com/api/graphqlbatch/"
 
 // Request a refresh when the page changes
 chrome.webRequest.onCompleted.addListener(function(details) {
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		switch (details.url) {
-			case FSEND:
-			case MSEND:
-				chrome.tabs.sendMessage(tabs[0].id, "sent");
-				break;
-			case FRECEIVE:
-			case MRECEIVE:
-				chrome.tabs.sendMessage(tabs[0].id, "received");
-				break;
-			case FSWITCH:
-			case MSWITCH:
-				chrome.tabs.sendMessage(tabs[0].id, "switched");
-				break;
-			case FSCROLL:
-			case MSCROLL:
-				chrome.tabs.sendMessage(tabs[0].id, "scrolled");
-				break;
-		}
-  		chrome.tabs.sendMessage(tabs[0].id, "refresh");
-	});
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        switch (details.url) {
+            case FSEND:
+            case MSEND:
+                chrome.tabs.sendMessage(tabs[0].id, "sent");
+                break;
+            case FRECEIVE:
+            case MRECEIVE:
+                chrome.tabs.sendMessage(tabs[0].id, "received");
+                break;
+            case FSWITCH:
+            case MSWITCH:
+                chrome.tabs.sendMessage(tabs[0].id, "switched");
+                break;
+            case FSCROLL:
+            case MSCROLL:
+                chrome.tabs.sendMessage(tabs[0].id, "scrolled");
+                break;
+        }
+          chrome.tabs.sendMessage(tabs[0].id, "refresh");
+    });
 }, {urls: [
     FSEND,
     FRECEIVE,

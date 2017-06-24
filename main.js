@@ -26,8 +26,8 @@
     
     // Forward messages from the background script to the window 
     chrome.runtime.onMessage.addListener(
-	  	function(request, sender, sendResponse) {
+          function(request, sender, sendResponse) {
             window.postMessage(request, "*");
-	  	}
-	)
+          }
+    )
 })();
