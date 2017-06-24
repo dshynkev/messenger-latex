@@ -33,5 +33,5 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "web_accessible_resources": ["helper.js", "MathJax/*"]
+  "web_accessible_resources": ["helper.js", "MathJax/*", "livepreview.js"]
 }
