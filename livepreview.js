@@ -26,8 +26,8 @@ var Preview = {
     CreatePreview: function () {
         Preview.timeout = null;
         if (this.mjaxRunning) return; // Return if MathJax is already running
-        var input = document.querySelector("div._1mf").lastChild.lastChild;
-        var text = input.textContent;
+        var lines = document.querySelectorAll("div._1mf");
+        var text = lines[lines.length-1].lastChild.lastChild.textContent;
         if (text === this.oldtext) return; // Return if text hasn't changed
         if (!text.match(/\$\$.*\$\$/) && !text.match(/\\\(.*\\\)/)) { // or if no TeX is found
             this.oldtext = text;
