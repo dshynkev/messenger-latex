@@ -22,8 +22,6 @@ var Preview = {
     Init: function () {
         this.preview = document.getElementById("MathPreview"); 
         this.buffer = document.getElementById("MathBuffer");
-        console.log(this.buffer);
-        console.log(this.preview);
     },
     
     // switch buffer and preview
@@ -42,10 +40,20 @@ var Preview = {
     CreatePreview: function () {
         Preview.timeout = null;
         if (this.mjaxRunning) return; // Return if MathJax is already running
-        var temp = document.querySelector("div._1mf");
-        var text = temp.lastChild.lastChild.textContent;
+        var input = document.querySelector("div._1mf").lastChild.lastChild;
+        var text = input.textContent;
         if (text === this.oldtext) return; // Return if text hasn't changed
-        console.log(text);
+        if (!text.match(/\$\$.*\$\$/) && !text.match(/\\\(.*\\\)/)) { // or if no TeX is found
+            this.oldtext = text;
+            // If the preview is visible
+            if (!this.preview.style.visibility) {
+                // Hide the preview
+                this.preview.style.visibility = "hidden";
+                this.preview.style.position = "absolute";
+            }
+            return;
+        }
+
         this.buffer.innerHTML = this.oldtext = text;
         this.mjaxRunning = true;
         MathJax.Hub.Queue(
@@ -69,15 +77,14 @@ document.getElementsByClassName("_kmc")[0].setAttribute("onkeyup", "Preview.Upda
 // Output buffer and preview boxes
 var MathPreview = document.createElement("DIV");
 MathPreview.id = "MathPreview";
-MathPreview.style = "border:1px solid; padding: 3px; width:50%; margin-top:5px";
+MathPreview.style = "border:1px solid; padding:3px; width:50%; margin-top:5px; visibility:hidden; position:absolute; top:0; left:0;";
 document.getElementsByClassName("_kmc")[0].appendChild(MathPreview);
 
 var MathBuffer = document.createElement("DIV");
 MathBuffer.id = "MathBuffer";
-MathBuffer.style = "border:1px solid; padding: 3px; width:50%; margin-top:5px; visibility:hidden; position:absolute; top:0; left: 0";
+MathBuffer.style = "border:1px solid; padding:3px; width:50%; margin-top:5px; visibility:hidden; position:absolute; top:0; left:0;";
 MathBuffer.textContent = " ";
 document.getElementsByClassName("_kmc")[0].appendChild(MathBuffer);
-console.log(MathBuffer);
 
 // Initialze preview
 Preview.Init();
