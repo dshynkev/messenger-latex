@@ -86,17 +86,17 @@ Preview.callback = MathJax.Callback(["CreatePreview",Preview]);
 Preview.callback.autoReset = true; 
 
 // Update on keystrokes 
-document.getElementsByClassName("_kmc")[0].setAttribute("onkeyup", "Preview.Update()"); //TODO: Change back to Update()
+document.getElementsByClassName("_kmc")[0].setAttribute("onkeyup", "Preview.Update()");
 
 // Output buffer and preview boxes
 var MathPreview = document.createElement("DIV");
 MathPreview.id = "MathPreview";
-MathPreview.style = "border:1px solid; padding:3px; width:50%; margin-top:5px; visibility:hidden; position:absolute; top:0; left:0;";
+MathPreview.style = "border:2px solid; border-radius:10px; border-color:#0084ff; padding:10px 15px 10px 15px; width:40%; margin:10px; position:absolute; z-index: 999";
 document.getElementsByClassName("_kmc")[0].appendChild(MathPreview);
 
 var MathBuffer = document.createElement("DIV");
 MathBuffer.id = "MathBuffer";
-MathBuffer.style = "border:1px solid; padding:3px; width:50%; margin-top:5px; visibility:hidden; position:absolute; top:0; left:0;";
+MathBuffer.style = "border:2px solid; border-radius:10px; border-color:#0084ff; padding:10px 15px 10px 15px; width:40%; margin:10px; visibility:hidden; position:absolute; z-index: 999";
 MathBuffer.textContent = " ";
 document.getElementsByClassName("_kmc")[0].appendChild(MathBuffer);
 
