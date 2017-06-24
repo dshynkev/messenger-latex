@@ -95,7 +95,7 @@ document.getElementsByClassName("_kmc")[0].setAttribute("onkeyup", "Preview.Upda
 var MathPreview = document.createElement("DIV");
 MathPreview.id = "MathPreview";
 MathPreview.className = "tex2jax_process"
-MathPreview.style = "border:2px solid; border-radius:10px; border-color:#0084ff; padding:10px 15px 10px 15px; width:40%; margin:10px; position:absolute; z-index: 999";
+MathPreview.style = "border:2px solid; border-radius:10px; border-color:#0084ff; padding:10px 15px 10px 15px; width:40%; margin:10px; position:absolute; visibility:hidden; z-index: 999";
 document.getElementsByClassName("_kmc")[0].appendChild(MathPreview);
 
 var MathBuffer = document.createElement("DIV");
