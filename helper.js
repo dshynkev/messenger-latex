@@ -4,10 +4,24 @@ window.addEventListener("message", function(event) {
         return;
 
     // Forwarded from the backdround script
-    if (event.data == "refresh") {
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-        console.log("refreshed");
-    }
+    switch (event.data) {
+    	case "sent":
+    	case "switched":
+    		MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    		console.log("refreshed");
+    		Preview.Update();
+    		break;
+    	case "received":
+    		MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    		console.log("refreshed");
+    		break;
+    	case "scrolled":
+    		setTimeout(function() {
+    			MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    			console.log("refreshed");
+    		});
+    		break;
+    };
 }, false);
 
 
