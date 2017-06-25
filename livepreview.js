@@ -87,7 +87,7 @@ MathBuffer.textContent = " ";
 var SavePNG = document.createElement("button");
 SavePNG.id = "SavePNG";
 SavePNG.setAttribute("class", "btn");
-SavePNG.style = "position: absolute; left: 100%; bottom: 0%; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 5px; padding: 5px; display: none; z-index: 999; font-size: 75%; text-align: center; box-shadow: 2px 2px 1px #ccc; margin-left: 5px; transition: background-color 0.25s, border 0.25s; color: #fff";
+SavePNG.style = "position: absolute; left: 100%; bottom: 0%; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 5px; padding: 5px; display: none; z-index: 999; font-size: 75%; text-align: center; box-shadow: 2px 2px 1px #ccc; margin-left: 5px; transition: background-color 0.25s, border 0.25s; color: #000";
 SavePNG.textContent = "Save PNG";
 
 
