@@ -65,7 +65,7 @@ function render() {
 
   var canvas = document.getElementById('drawCanvas');
   // bBox
-  var divisionFactor = 40;
+  var divisionFactor = 50;
   canvas.width = bBox.width / divisionFactor;
   canvas.height = bBox.height / divisionFactor;
 
