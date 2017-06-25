@@ -48,19 +48,23 @@ function render() {
     bBox = svg.getBBox();
 
     var canvas = document.querySelector('drawCanvas');
-    function triggerDownload (imgURI) {
-        var evt = new MouseEvent('click', {
-            view: window,
-            bubbles: false,
-            cancelable: true
+    function sendImage (imageBlob) {
+        var XHR = new XMLHttpRequest();
+        var FD = new FormData();
+
+        FD.append('tex_image', imageBlob, 'TeX.png');
+
+        XHR.addEventListener("load", function(event) {
+          console.log(event.target.responseText);
         });
 
-        var a = document.createElement('a');
-        a.setAttribute('download', 'messenger-latex equation.png');
-        a.setAttribute('href', imgURI);
-        a.setAttribute('target', '_blank');
+        XHR.addEventListener("error", function(event) {
+          console.log("Failed to send");
+        });
 
-        a.dispatchEvent(evt);
+        XHR.open("POST", "https://upload.facebook.com/ajax/mercury/upload.php");
+
+        XHR.send(FD);
     }
 
     var canvas = document.getElementById('drawCanvas');
@@ -108,11 +112,7 @@ function render() {
       ctx.drawImage(img, 1, 1);
       DOMURL.revokeObjectURL(url);
 
-      var imgURI = canvas
-          .toDataURL('image/png')
-          .replace('image/png', 'image/octet-stream');
-
-      triggerDownload(imgURI);
+    canvas.toBlob(sendImage);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
