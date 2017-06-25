@@ -3,7 +3,7 @@
 
   "name": "Messenger LaTeX",
   "description": "Use LaTeX markup in Facebook Messenger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   
   "icons": {
     "128": "icon.png"
