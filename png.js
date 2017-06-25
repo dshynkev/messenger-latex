@@ -40,10 +40,14 @@ window.MathJax = {
   }
 };
 
+var bBox; // bBox is used to know the dimensions of the svg to render the png with the right dimensions
+
 function render() {
   var svg = document.getElementById('MathPreview').getElementsByClassName("MathJax_SVG")[0].childNodes[0];
-  var canvas = document.querySelector('drawCanvas');
+  // bBox
+  bBox = svg.getBBox();
 
+  var canvas = document.querySelector('drawCanvas');
   function triggerDownload (imgURI) {
     var evt = new MouseEvent('click', {
       view: window,
@@ -52,7 +56,7 @@ function render() {
     });
 
     var a = document.createElement('a');
-    a.setAttribute('download', 'MY_COOL_IMAGE.png');
+    a.setAttribute('download', 'messenger-latex equation.png');
     a.setAttribute('href', imgURI);
     a.setAttribute('target', '_blank');
 
@@ -60,6 +64,11 @@ function render() {
   }
 
   var canvas = document.getElementById('drawCanvas');
+  // bBox
+  var divisionFactor = 47;
+  canvas.width = bBox.width / divisionFactor;
+  canvas.height = bBox.height / divisionFactor;
+  
     var ctx = canvas.getContext('2d');
     var data = (new XMLSerializer()).serializeToString(svg);
     var DOMURL = window.URL || window.webkitURL || window;
