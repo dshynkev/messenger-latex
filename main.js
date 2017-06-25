@@ -22,7 +22,7 @@
     helperScript.defer = true;
     document.getElementsByTagName("head")[0].appendChild(helperScript);
 
-
+    /*
     //CAN BE COMMENTARIZED NOT TESTED IN MESSENGER
     // Inject png script 1
     var pngScript1 = document.createElement("script");
@@ -35,7 +35,7 @@
     pngScript2.src = chrome.extension.getURL("png2.js");
     document.getElementsByTagName("body")[0].appendChild(pngScript2);
     //CAN BE COMMENTARIZED NOT TESTED IN MESSENGER
-    
+    */
 
     
     // Forward messages from the background script to the window 
