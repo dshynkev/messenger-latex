@@ -4,11 +4,13 @@ var Preview = {
 
     preview: null, buffer: null, 
     timeout: null, mjaxRunning: false,
-    oldText: null, 
+    oldText: null, savebutton: null,
+    savebuttonbuffer: null,
 
     Init: function () {
         this.preview = document.getElementById("MathPreview"); 
         this.buffer = document.getElementById("MathBuffer");
+        this.savebutton = document.getElementById("SavePNG");
     },
     
     // switch buffer and preview
@@ -16,7 +18,11 @@ var Preview = {
         var buffer = this.preview, preview = this.buffer;
         this.buffer = buffer; this.preview = preview;
         buffer.style.display = "none";
+        buffer.id = "MathBuffer";
         preview.style.display = "";
+        preview.id = "MathPreview";
+        this.preview.appendChild(this.savebutton);
+        this.savebutton.style.display = "";
     },
 
     Update: function () {
@@ -36,6 +42,7 @@ var Preview = {
             if (!this.preview.style.display) {
                 // Hide the preview
                 this.preview.style.display = "none";
+                this.savebutton.style.display = "none";
             }
             return;
         }
@@ -62,31 +69,47 @@ var currentpage = window.location.href;
 if (currentpage.includes("facebook.com/messages")) chatClass="_kmc";
 else if (currentpage.includes("messenger.com")) chatClass="_kmc";
 else chatClass="_552h";
-console.log(chatClass);
 
 // Update on keystrokes 
 chat = document.getElementsByClassName(chatClass)[0];
-
 
 // Output buffer and preview boxes
 var MathPreview = document.createElement("div");
 MathPreview.id = "MathPreview";
 MathPreview.className = "tex2jax_process"
-MathPreview.style = "position:absolute; bottom: 115%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999";
+MathPreview.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999; margin-bottom: 3px";
 
 var MathBuffer = document.createElement("div");
 MathBuffer.id = "MathBuffer";
 MathBuffer.className = "tex2jax_process"
-MathBuffer.style = "position:absolute; bottom: 115%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999";
+MathBuffer.style = "position:absolute; bottom: 100%; box-shadow: 2px 2px 1px #ccc; background-color: #f0f0f0; border: 1px solid #0084ff; border-radius: 10px; padding: 10px; display:none; z-index: 999; margin-bottom: 3px";
 MathBuffer.textContent = " ";
+
+// PNG button and styles
+var SavePNG = document.createElement("button");
+SavePNG.id = "SavePNG";
+SavePNG.setAttribute("class", "btn");
+SavePNG.style = "position: absolute; left: 100%; bottom: 0%; background-color: #f0f0f0; border: 1px solid #3b5998; border-radius: 5px; padding: 5px; display: none; z-index: 999; font-size: 75%; text-align: center; box-shadow: 2px 2px 1px #ccc; margin-left: 5px; transition: background-color 0.25s, border 0.25s; color: #111";
+SavePNG.setAttribute("onClick", "setTimeout(render, 1000)");
+SavePNG.textContent = "Save PNG";
+
+
+//PNG styles
+SavePNG.onmouseover=function(){
+    this.style.backgroundColor="#3b5998";
+    this.style.color="#dfe3ee";
+}
+SavePNG.onmouseout=function() {
+   this.style.backgroundColor="#f0f0f0";    this.style.color="#111";
+}
+
+// If the chat exists, then add the live components
 if (chat != null) {
     chat.appendChild(MathPreview);
     chat.appendChild(MathBuffer);
+    chat.appendChild(SavePNG);
     chat.setAttribute("onkeyup", "Preview.Update()");
 };
-
-
-console.log(document.getElementsByClassName(chatClass)[0]);
 
 // Initialze preview
 Preview.Init();

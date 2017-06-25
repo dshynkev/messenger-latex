@@ -50,8 +50,10 @@ chrome.webRequest.onCompleted.addListener(function(details) {
             case MSCROLL:
                 chrome.tabs.sendMessage(tabs[0].id, "scrolled");
                 break;
+            case FTAB:
+                chrome.tabs.sendMessage(tabs[0].id, "tabbed");
+                break;
         }
-          chrome.tabs.sendMessage(tabs[0].id, "refresh");
     });
 }, {urls: URLS}
 );

@@ -2,32 +2,42 @@ window.addEventListener("message", function(event) {
     // Only accept messages from the same window
     if (event.source != window)
         return;
-
+    
     // Forwarded from the background script
     switch (event.data) {
         case "sent":
+            console.log(event.data);
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-            console.log("refreshed");
             Preview.Update();
             break;
         case "switched":
+            console.log(event.data); 
             var input = document.getElementsByClassName("_1mf")[0]
             if (input != null) {
                 input.classList.add("tex2jax_ignore");               
             };
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-            console.log("refreshed");
             Preview.Update();
             break;
         case "received":
+            console.log(event.data);
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-            console.log("refreshed");
             break;
         case "scrolled": //Timeout ensures that the older messages are loaded before MathJax updates
+            console.log(event.data);
             setTimeout(function() {
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                console.log("refreshed");
             }, 500);
+            break;
+        case "tabbed":
+            console.log(event.data);
+            var inputs = document.getElementsByClassName("_1mf")
+            console.log(inputs.length);
+            if (inputs != null) {
+                for (var i = 0; i < inputs.length; i++) {
+                inputs[i].classList.add("tex2jax_ignore");
+                }
+            };
             break;
     };
 }, false);
