@@ -43,31 +43,54 @@ window.MathJax = {
 var bBox; // bBox is used to know the dimensions of the svg to render the png with the right dimensions
 
 function render() {
-  var svg = document.getElementById('MathPreview').getElementsByClassName("MathJax_SVG")[0].childNodes[0];
-  // bBox
-  bBox = svg.getBBox();
+    var svg = document.getElementById('MathPreview').getElementsByClassName("MathJax_SVG")[0].childNodes[0];
+    // bBox
+    bBox = svg.getBBox();
 
-  var canvas = document.querySelector('drawCanvas');
-  function triggerDownload (imgURI) {
-    var evt = new MouseEvent('click', {
-      view: window,
-      bubbles: false,
-      cancelable: true
-    });
+    var canvas = document.querySelector('drawCanvas');
+    function triggerDownload (imgURI) {
+        var evt = new MouseEvent('click', {
+            view: window,
+            bubbles: false,
+            cancelable: true
+        });
 
-    var a = document.createElement('a');
-    a.setAttribute('download', 'messenger-latex equation.png');
-    a.setAttribute('href', imgURI);
-    a.setAttribute('target', '_blank');
+        var a = document.createElement('a');
+        a.setAttribute('download', 'messenger-latex equation.png');
+        a.setAttribute('href', imgURI);
+        a.setAttribute('target', '_blank');
 
-    a.dispatchEvent(evt);
-  }
+        a.dispatchEvent(evt);
+    }
 
-  var canvas = document.getElementById('drawCanvas');
-  // bBox
-  var divisionFactor = 50;
-  canvas.width = bBox.width / divisionFactor;
-  canvas.height = bBox.height / divisionFactor;
+    var canvas = document.getElementById('drawCanvas');
+    
+    // bBox
+    var wDivisionFactor = 50;
+    var hDivisionFactor = 50;
+
+    if(bBox.width < 700){
+        wDivisionFactor = 40;
+    }
+    else if(bBox.width < 1100){
+        wDivisionFactor = 45;
+    }
+    else{
+        wDivisionFactor = 50;
+    }
+    
+    if(bBox.height < 750){
+        hDivisionFactor = 35;
+    }
+    else if(bBox.height < 1000){
+        hDivisionFactor = 37;
+    }
+    else{
+        hDivisionFactor = 45;
+    }
+    
+    canvas.width = bBox.width / wDivisionFactor;
+    canvas.height = bBox.height / hDivisionFactor;
 
     var ctx = canvas.getContext('2d');
     var data = (new XMLSerializer()).serializeToString(svg);
@@ -78,7 +101,7 @@ function render() {
     var url = DOMURL.createObjectURL(svgBlob);
 
     img.onload = function () {
-      ctx.drawImage(img, 0, 0);
+      ctx.drawImage(img, 1, 1);
       DOMURL.revokeObjectURL(url);
 
       var imgURI = canvas
