@@ -1,4 +1,3 @@
-MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 //Live Preview
 var Preview = {
     delay: 150,   // delay after keystroke to update
