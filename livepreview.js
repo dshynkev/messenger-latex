@@ -1,3 +1,4 @@
+MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 //Live Preview
 var Preview = {
     delay: 150,   // delay after keystroke to update
@@ -46,6 +47,11 @@ var Preview = {
             }
             return;
         }
+
+        // SET BACKGROUND TO WHITE
+        text = text.substring(2, text.length - 2);
+        text = "$$ \\bbox[white]{" + text + "} $$";
+        // SET BACKGROUND TO WHITE
 
         this.buffer.innerHTML = this.oldtext = text;
         this.mjaxRunning = true;

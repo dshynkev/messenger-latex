@@ -8,7 +8,7 @@ window.MathJax = {
     useGlobalCache: false
   },
   TeX: {
-    extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"]
+    extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js", "color.js"]
   },
   AuthorInit: function() {
     MathJax.Hub.Register.StartupHook("End", function() {
@@ -65,10 +65,10 @@ function render() {
 
   var canvas = document.getElementById('drawCanvas');
   // bBox
-  var divisionFactor = 47;
+  var divisionFactor = 40;
   canvas.width = bBox.width / divisionFactor;
   canvas.height = bBox.height / divisionFactor;
-  
+
     var ctx = canvas.getContext('2d');
     var data = (new XMLSerializer()).serializeToString(svg);
     var DOMURL = window.URL || window.webkitURL || window;
