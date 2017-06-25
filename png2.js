@@ -1,4 +1,4 @@
-setTimeout(function() {
+function render() {
   var svg = document.getElementById('MathJax-Element-1-Frame').childNodes[0];
   var canvas = document.querySelector('canvas');
   console.log(svg)
@@ -39,4 +39,5 @@ setTimeout(function() {
     };
 
     img.src = url;
-}, 1000)
+}
+setTimeout(render, 1000);
