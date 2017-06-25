@@ -1,12 +1,13 @@
 var FSEND = "https://www.facebook.com/messaging/send/*"
 var FRECEIVE = "https://www.facebook.com/ajax/mercury/delivery_receipts.php*"
 var FSWITCH = "https://www.facebook.com/ajax/bz"
-var FSCROLL = "https://www.facebook.com/api/graphqlbatch/"
+var FSCROLL = "https://www.facebook.com/ajax/mercury/thread_info.php*"
+var FTAB = "https://www.facebook.com/ajax/mercury/tabs_presence.php*"
 var MSEND = "https://www.messenger.com/messaging/send/*"
 var MRECEIVE = "https://www.messenger.com/ajax/mercury/delivery_receipts.php*"
 var MSWITCH = "https://www.messenger.com/ajax/bz"
-var MSCROLL = "https://www.messenger.com/api/graphqlbatch/"
-var FTAB = "https://www.facebook.com/ajax/mercury/tabs_presence.php*"
+var MSCROLL = "https://www.messenger.com/ajax/mercury/thread_info.php*"
+var MTAB = "https://www.messenger.com/ajax/mercury/tabs_presence.php*"
 
 URLS = [
     FSEND,
@@ -18,6 +19,7 @@ URLS = [
     MSWITCH,
     MSCROLL,
     FTAB,
+    MTAB,
 ];
 
 function checkURL(url) {
@@ -51,6 +53,7 @@ chrome.webRequest.onCompleted.addListener(function(details) {
                 chrome.tabs.sendMessage(tabs[0].id, "scrolled");
                 break;
             case FTAB:
+            case MTAB:
                 chrome.tabs.sendMessage(tabs[0].id, "tabbed");
                 break;
         }
