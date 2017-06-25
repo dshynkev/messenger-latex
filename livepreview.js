@@ -47,11 +47,6 @@ var Preview = {
             return;
         }
 
-        // SET BACKGROUND TO WHITE
-        text = text.substring(2, text.length - 2);
-        text = "$$ \\bbox[white]{" + text + "} $$";
-        // SET BACKGROUND TO WHITE
-
         this.buffer.innerHTML = this.oldtext = text;
         this.mjaxRunning = true;
         MathJax.Hub.Queue(
