@@ -27,7 +27,7 @@ function render() {
     var url = DOMURL.createObjectURL(svgBlob);
 
     img.onload = function () {
-\      ctx.drawImage(img, 0, 0);
+      ctx.drawImage(img, 0, 0);
       DOMURL.revokeObjectURL(url);
 
       var imgURI = canvas
