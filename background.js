@@ -1,12 +1,12 @@
-var FSEND = "https://www.facebook.com/messaging/send/"
-var FRECEIVE = "https://www.facebook.com/ajax/mercury/mark_seen.php"
+var FSEND = "https://www.facebook.com/messaging/send/?dpr=1"
+var FRECEIVE = "https://www.facebook.com/ajax/mercury/mark_seen.php?dpr=1"
 var FSWITCH = "https://www.facebook.com/ajax/bz"
 var FSCROLL = "https://www.facebook.com/api/graphqlbatch/"
-var MSEND = "https://www.messenger.com/messaging/send/"
-var MRECEIVE = "https://www.messenger.com/ajax/mercury/delivery_receipts.php"
+var MSEND = "https://www.messenger.com/messaging/send/?dpr=1"
+var MRECEIVE = "https://www.messenger.com/ajax/mercury/delivery_receipts.php?dpr=1"
 var MSWITCH = "https://www.messenger.com/ajax/bz"
 var MSCROLL = "https://www.messenger.com/api/graphqlbatch/"
-var FTAB = "https://www.facebook.com/ajax/mercury/tabs_presence.php"
+var FTAB = "https://www.facebook.com/ajax/mercury/tabs_presence.php?dpr=1"
 
 // Request a refresh when the page changes
 chrome.webRequest.onCompleted.addListener(function(details) {
