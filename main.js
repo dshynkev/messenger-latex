@@ -3,7 +3,7 @@
     var mathJaxScript = document.createElement("script");
     mathJaxScript.type = "text/javascript";
     mathJaxScript.src = chrome.extension.getURL("MathJax/MathJax.js");
-    mathJaxScript.src += "?config=TeX-AMS_HTML";
+    mathJaxScript.src += "?config=TeX-AMS_SVG";
     mathJaxScript.async = false;
     mathJaxScript.defer = true;
     document.getElementsByTagName("head")[0].appendChild(mathJaxScript);
@@ -22,7 +22,7 @@
     helperScript.defer = true;
     document.getElementsByTagName("head")[0].appendChild(helperScript);
 
-    /*
+    
     //CAN BE COMMENTARIZED NOT TESTED IN MESSENGER
     // Inject png script 1
     var pngScript1 = document.createElement("script");
@@ -34,8 +34,12 @@
     pngScript2.type = "text/javascript";
     pngScript2.src = chrome.extension.getURL("png2.js");
     document.getElementsByTagName("body")[0].appendChild(pngScript2);
+    var canvas = document.createElement("canvas");
+    canvas.id = "drawCanvas";
+    // canvas.style = "display: none"
+    document.getElementsByTagName("body")[0].appendChild(canvas);
     //CAN BE COMMENTARIZED NOT TESTED IN MESSENGER
-    */
+    
 
     
     // Forward messages from the background script to the window 

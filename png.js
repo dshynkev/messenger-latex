@@ -26,7 +26,7 @@ window.MathJax = {
           var image = new Image();
           image.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(output.svg)));
           image.onload = function() {
-            var canvas = document.createElement('canvas');
+            var canvas = document.getElementById('drawCanvas');
             canvas.width = image.width;
             canvas.height = image.height;
             var context = canvas.getContext('2d');
@@ -36,23 +36,20 @@ window.MathJax = {
           };
         });
       }
-      mj2img("\\[f: X \\to Y\\]", function(output){
-        document.getElementById("target").innerText = output.img + '\n' + output.svg;
-      });
     });
   }
 };
 
-(function(d, script) {
-  script = d.createElement('script');
-  script.type = 'text/javascript';
-  script.async = true;
-  script.onload = function() {
-    // remote script has loaded
-  };
-  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js';
-  d.getElementsByTagName('head')[0].appendChild(script);
-}(document));
+// (function(d, script) {
+//   script = d.createElement('script');
+//   script.type = 'text/javascript';
+//   script.async = true;
+//   script.onload = function() {
+//     // remote script has loaded
+//   };
+//   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js';
+//   d.getElementsByTagName('head')[0].appendChild(script);
+// }(document));
 
 /*var canvas = document.getElementsByTagName("svg")[0];
 var img = canvas.toDataURL("image/png");

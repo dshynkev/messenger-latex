@@ -1,7 +1,6 @@
 function render() {
-  var svg = document.getElementById('MathJax-Element-1-Frame').childNodes[0];
-  var canvas = document.querySelector('canvas');
-  console.log(svg)
+  var svg = document.getElementById('MathPreview').getElementsByClassName("MathJax_SVG")[0].childNodes[0];
+  var canvas = document.querySelector('drawCanvas');
 
   function triggerDownload (imgURI) {
     var evt = new MouseEvent('click', {
@@ -18,7 +17,7 @@ function render() {
     a.dispatchEvent(evt);
   }
 
-  var canvas = document.getElementById('canvas');
+  var canvas = document.getElementById('drawCanvas');
     var ctx = canvas.getContext('2d');
     var data = (new XMLSerializer()).serializeToString(svg);
     var DOMURL = window.URL || window.webkitURL || window;
@@ -28,7 +27,7 @@ function render() {
     var url = DOMURL.createObjectURL(svgBlob);
 
     img.onload = function () {
-      ctx.drawImage(img, 0, 0);
+\      ctx.drawImage(img, 0, 0);
       DOMURL.revokeObjectURL(url);
 
       var imgURI = canvas
@@ -40,4 +39,3 @@ function render() {
 
     img.src = url;
 }
-setTimeout(render, 1000);
