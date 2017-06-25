@@ -1,5 +1,5 @@
 var FSEND = "https://www.facebook.com/messaging/send/*"
-var FRECEIVE = "https://www.facebook.com/ajax/mercury/delivery_receipts.php?dpr=1*"
+var FRECEIVE = "https://www.facebook.com/ajax/mercury/delivery_receipts.php*"
 var FSWITCH = "https://www.facebook.com/ajax/bz"
 var FSCROLL = "https://www.facebook.com/api/graphqlbatch/"
 var MSEND = "https://www.messenger.com/messaging/send/*"
