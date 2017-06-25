@@ -29,10 +29,10 @@
     pngScript.type = "text/javascript";
     pngScript.src = chrome.extension.getURL("png.js");
     document.getElementsByTagName("body")[0].appendChild(pngScript);
+    
     var canvas = document.createElement("canvas");
     canvas.id = "drawCanvas";
-    
-    // canvas.style = "display: none"
+    canvas.style = "display: none";
     document.getElementsByTagName("body")[0].appendChild(canvas);
 
     // Forward messages from the background script to the window 
