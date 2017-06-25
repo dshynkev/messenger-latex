@@ -77,6 +77,8 @@ function render() {
           .replace('image/png', 'image/octet-stream');
 
       triggerDownload(imgURI);
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
 
     img.src = url;
