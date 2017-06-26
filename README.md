@@ -10,6 +10,7 @@ Use LaTeX markup as you normally would.
 
 Standalone LaTeX formulas are written like so: `$$ x + 1 $$`; inline — like so: `\( x + 1 \)`. To input literal `\(` and `\)`, escape the backslash like so: `\\( \\)`
 
+To copy the LaTeX markup of a rendered equation, **click** right on it. The corresponding markup will be copied to your system's clipboard.
 ## Features
 
 * LaTeX **markup rendering** in Facebook mini-chats and Facebook Messenger
