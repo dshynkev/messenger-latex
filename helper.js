@@ -8,8 +8,8 @@ window.addEventListener("message", function(event) {
         case "sent":
             console.log(event.data);
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Queue([getText]);
             Preview.Update();
-            getText();
             break;
         case "switched":
             console.log(event.data); 
@@ -18,20 +18,20 @@ window.addEventListener("message", function(event) {
                 input.classList.add("tex2jax_ignore");               
             };
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Queue([getText]);
             Preview.Update();
-            getText();
             break;
         case "received":
             console.log(event.data);
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-            getText();
+            MathJax.Hub.Queue([getText]);
             break;
         case "scrolled": //Timeout ensures that the older messages are loaded before MathJax updates
             console.log(event.data);
             setTimeout(function() {
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                MathJax.Hub.Queue([getText]);
             }, 500);
-            getText();
             break;
         case "tabbed":
             console.log(event.data);
