@@ -29,8 +29,8 @@ function render() {
 
     var canvas = document.getElementById('drawCanvas');
     
-    canvas.width = bBox.width;
-    canvas.height = bBox.height;
+    canvas.width = bBox.width / 10;
+    canvas.height = bBox.height / 10;
 
     var ctx = canvas.getContext('2d');
     ctx.fillStyle = '#fff';
@@ -45,17 +45,17 @@ function render() {
     var url = DOMURL.createObjectURL(svgBlob);
 
     img.onload = function () {
-    	var offset = 12;
-      ctx.drawImage(img, offset, offset, bBox.width + offset, bBox.height + offset);
-      DOMURL.revokeObjectURL(url);
+        var offset = 1;
+        ctx.drawImage(img, offset, offset, canvas.width + offset, canvas.height + offset);
+        DOMURL.revokeObjectURL(url);
 
-      var imgURI = canvas
-          .toDataURL('image/png')
-          .replace('image/png', 'image/octet-stream');
+        var imgURI = canvas
+        .toDataURL('image/png')
+        .replace('image/png', 'image/octet-stream');
 
-      triggerDownload(imgURI);
+        triggerDownload(imgURI);
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
 
     img.src = url;

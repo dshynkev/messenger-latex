@@ -93,14 +93,14 @@ SavePNG.style = "position: absolute; left: 100%; bottom: 0%; background-color: #
 SavePNG.setAttribute("onClick", "setTimeout(render, 1000)");
 SavePNG.textContent = "Save PNG";
 
-
 //PNG styles
 SavePNG.onmouseover=function(){
     this.style.backgroundColor="#3b5998";
     this.style.color="#dfe3ee";
 }
 SavePNG.onmouseout=function() {
-   this.style.backgroundColor="#f0f0f0";    this.style.color="#111";
+   this.style.backgroundColor="#f0f0f0";    
+    this.style.color="#111";
 }
 
 // If the chat exists, then add the live components

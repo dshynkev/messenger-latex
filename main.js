@@ -1,10 +1,11 @@
 (function() {
     injectScript("config.js");
     injectScript("MathJax/MathJax.js");
+    injectScript("copytext.js");
     injectScript("livepreview.js");
-    injectScript("helper.js");
     injectScript("png.js");
-    
+    injectScript("helper.js");
+            
     var canvas = document.createElement("canvas");
     canvas.id = "drawCanvas";
     canvas.style = "display: none";
@@ -24,5 +25,5 @@
         script.async = false;
         script.defer = true;
         document.getElementsByTagName("head")[0].appendChild(script);
-    }
+    }    
 })();
