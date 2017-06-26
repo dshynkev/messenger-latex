@@ -4,6 +4,9 @@ window.MathJax = {
   showMathMenu: false,
   showProcessingMessages: false,
   messageStyle: "none",
+  tex2jax: {
+    processEscapes: true
+  },
   SVG: {
     useGlobalCache: false
   },
