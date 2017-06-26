@@ -6,21 +6,18 @@ document.body.appendChild(textarea);
 
 function getText() {
     var textNodes = document.getElementsByClassName("MathJax_SVG_Display");
-    var nodes = textNodes.length;
-    var i;
-    for(i = 0; i < nodes - 1; i++){
+    for(var i = 0; i < textNodes.length; i++){
         var currentNode = textNodes[i].nextSibling;
-        currentNode.setAttribute("class", "found");
-        textNodes[i].parentElement.parentElement.parentElement.setAttribute("onmouseup", "copy(this)");
+        textNodes[i].parentElement.parentElement.parentElement.setAttribute("onmousedown", "copy(this)");
     }
 };
                                                 
 function copy(currentNode) {
     var selectedText = currentNode.getElementsByTagName("script")[0].textContent;
-    var copiedText = "$$" + selectedText + "$$";
     var textarea = document.getElementById("textarea");
-    textarea.value = copiedText;
+    textarea.value = "$$" + selectedText + "$$";
     textarea.select();
+    console.log(textarea.value);
     document.execCommand("copy");
     textarea.value = "";
 };
