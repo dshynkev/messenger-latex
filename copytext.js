@@ -9,20 +9,15 @@ function getText() {
     for(var i = 0; i < textNodes.length; i++){
         var currentNode = textNodes[i].nextSibling;
         textNodes[i].parentElement.parentElement.parentElement.setAttribute("onmousedown", "copy(this)");
+        textNodes[i].parentElement.parentElement.parentElement.title = "Click to Copy";
         textNodes[i].class="found";
-        textNodes[i].parentElement.parentElement.parentElement.title = "Click to copy";
     }
 };
                                                 
 function copy(currentNode) {
     var textScript = currentNode.getElementsByTagName("script")[0];
     var textarea = document.getElementById("textarea");
-    if(textScript.type=="math/tex"){
-        textarea.value = "\\(" + textScript.textContent + "\\)";
-    }
-    else {
-        textarea.value = "$$" + textScript.textContent + "$$";
-    }
+    textarea.value = (textScript.type=="math/tex") ? ("\\(" + textScript.textContent + "\\)") : ("$$" + textScript.textContent + "$$");
     textarea.select();
     document.execCommand("copy");
     textarea.value = "";

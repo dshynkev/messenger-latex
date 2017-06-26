@@ -70,8 +70,6 @@ if (currentpage.includes("facebook.com/messages")) chatClass="_kmc";
 else if (currentpage.includes("messenger.com")) chatClass="_kmc";
 else chatClass="_552h";
 
-// Update on keystrokes 
-chat = document.getElementsByClassName(chatClass)[0];
 
 // Output buffer and preview boxes
 var MathPreview = document.createElement("div");
@@ -88,7 +86,6 @@ MathBuffer.textContent = " ";
 // PNG button and styles
 var SavePNG = document.createElement("button");
 SavePNG.id = "SavePNG";
-SavePNG.setAttribute("class", "btn");
 SavePNG.style = "position: absolute; left: 100%; bottom: 0%; background-color: #f0f0f0; border: 1px solid #3b5998; border-radius: 5px; padding: 5px; display: none; z-index: 999; font-size: 75%; text-align: center; box-shadow: 2px 2px 1px #ccc; margin-left: 5px; transition: background-color 0.25s, border 0.25s; color: #111";
 SavePNG.setAttribute("onClick", "setTimeout(render, 1000)");
 SavePNG.textContent = "Save PNG";
@@ -104,6 +101,7 @@ SavePNG.onmouseout=function() {
 }
 
 // If the chat exists, then add the live components
+chat = document.getElementsByClassName(chatClass)[0];
 if (chat != null) {
     chat.appendChild(MathPreview);
     chat.appendChild(MathBuffer);
