@@ -10,6 +10,7 @@ function getText() {
         var currentNode = textNodes[i].nextSibling;
         textNodes[i].parentElement.parentElement.parentElement.setAttribute("onmousedown", "copy(this)");
         textNodes[i].class="found";
+        textNodes[i].parentElement.parentElement.parentElement.title = "Click to copy";
     }
 };
                                                 
