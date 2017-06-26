@@ -1,4 +1,10 @@
 var bBox; // bBox is used to know the dimensions of the svg to render the png with the right dimensions
+// This MathJax setting augments the resolution of the svgs rendered (it's a scale property)
+/*MathJax.Hub.Config({
+  SVG: {
+    scale: 120
+  }
+});*/
 
 function render() {
     var svg = document.getElementById('MathPreview').getElementsByClassName("MathJax_SVG")[0].childNodes[0];
@@ -23,32 +29,8 @@ function render() {
 
     var canvas = document.getElementById('drawCanvas');
     
-    // bBox
-    var wDivisionFactor = 50;
-    var hDivisionFactor = 50;
-
-    if(bBox.width < 700){
-        wDivisionFactor = 40;
-    }
-    else if(bBox.width < 1100){
-        wDivisionFactor = 45;
-    }
-    else{
-        wDivisionFactor = 50;
-    }
-    
-    if(bBox.height < 750){
-        hDivisionFactor = 35;
-    }
-    else if(bBox.height < 1000){
-        hDivisionFactor = 37;
-    }
-    else{
-        hDivisionFactor = 45;
-    }
-    
-    canvas.width = bBox.width / wDivisionFactor;
-    canvas.height = bBox.height / hDivisionFactor;
+    canvas.width = bBox.width;
+    canvas.height = bBox.height;
 
     var ctx = canvas.getContext('2d');
     ctx.fillStyle = '#fff';
@@ -63,7 +45,8 @@ function render() {
     var url = DOMURL.createObjectURL(svgBlob);
 
     img.onload = function () {
-      ctx.drawImage(img, 1, 1);
+    	var offset = 12;
+      ctx.drawImage(img, offset, offset, bBox.width + offset, bBox.height + offset);
       DOMURL.revokeObjectURL(url);
 
       var imgURI = canvas
