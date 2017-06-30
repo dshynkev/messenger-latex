@@ -28,6 +28,7 @@ window.addEventListener("message", function(event) {
             break;
         case "scrolled": //Timeout ensures that the older messages are loaded before MathJax updates
             console.log(event.data);
+            Preview.Update(); //Sometimes the scroll event is triggered instead of switch event
             setTimeout(function() {
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
                 MathJax.Hub.Queue([getText]);
