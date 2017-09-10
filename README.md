@@ -4,6 +4,8 @@
 
 This is a simple Chrome extension which recognizes and properly renders LaTeX markup in Facebook Messenger.
 
+*This extension is now retired. Its functionality has been impemented in Messenger natively.*
+
 ## How to use it
 
 Use LaTeX markup as you normally would.
