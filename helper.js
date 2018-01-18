@@ -1,8 +1,11 @@
+/*
+** Receive event notifications from background.js and schedule actions as needed.
+*/
 window.addEventListener("message", function(event) {
     // Only accept messages from the same window
     if (event.source != window)
         return;
-    
+
     // Forwarded from the background script
     switch (event.data) {
         case "sent":
@@ -12,10 +15,10 @@ window.addEventListener("message", function(event) {
             Preview.Update();
             break;
         case "switched":
-            console.log(event.data); 
+            console.log(event.data);
             var input = document.getElementsByClassName("_1mf")[0]
             if (input != null) {
-                input.classList.add("tex2jax_ignore");               
+                input.classList.add("tex2jax_ignore");
             };
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
             MathJax.Hub.Queue([getText]);
@@ -47,7 +50,7 @@ window.addEventListener("message", function(event) {
     };
 }, false);
 
-//Ignore MathJax in input 
+//Ignore MathJax in input
 var currentpage = window.location.href;
 if (currentpage.includes("facebook.com/messages") || currentpage.includes("messenger.com")) {
     var input = document.getElementsByClassName("_1mf")[0].classList.add("tex2jax_ignore");

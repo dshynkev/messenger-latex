@@ -1,3 +1,6 @@
+/*
+** This seems to magically work, for the most part.
+*/
 var bBox; // bBox is used to know the dimensions of the svg to render the png with the right dimensions
 // This MathJax setting augments the resolution of the svgs rendered (it's a scale property)
 /*MathJax.Hub.Config({
@@ -28,7 +31,7 @@ function render() {
     }
 
     var canvas = document.getElementById('drawCanvas');
-    
+
     canvas.width = bBox.width / 10;
     canvas.height = bBox.height / 10;
 

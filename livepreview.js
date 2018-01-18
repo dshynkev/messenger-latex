@@ -1,18 +1,20 @@
-//Live Preview
+/*
+** Live Preview
+*/
 var Preview = {
     delay: 150,   // delay after keystroke to update
 
-    preview: null, buffer: null, 
+    preview: null, buffer: null,
     timeout: null, mjaxRunning: false,
     oldText: null, savebutton: null,
     savebuttonbuffer: null,
 
     Init: function () {
-        this.preview = document.getElementById("MathPreview"); 
+        this.preview = document.getElementById("MathPreview");
         this.buffer = document.getElementById("MathBuffer");
         this.savebutton = document.getElementById("SavePNG");
     },
-    
+
     // switch buffer and preview
     SwapBuffers: function () {
         var buffer = this.preview, preview = this.buffer;
@@ -54,7 +56,7 @@ var Preview = {
             ["PreviewDone",this]
         );
     },
-    
+
     PreviewDone: function () {
         this.mjaxRunning = false;
         this.SwapBuffers();
@@ -62,7 +64,7 @@ var Preview = {
 };
 
 Preview.callback = MathJax.Callback(["CreatePreview",Preview]);
-Preview.callback.autoReset = true; 
+Preview.callback.autoReset = true;
 
 var chatClass = "_kmc";
 var currentpage = window.location.href;
@@ -96,7 +98,7 @@ SavePNG.onmouseover=function(){
     this.style.color="#dfe3ee";
 }
 SavePNG.onmouseout=function() {
-   this.style.backgroundColor="#f0f0f0";    
+   this.style.backgroundColor="#f0f0f0";
     this.style.color="#111";
 }
 

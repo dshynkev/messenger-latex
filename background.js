@@ -1,3 +1,8 @@
+/*
+** This is a background script (runs in a separate context).
+** Here we install network request hooks and notify the helper script
+** when they are triggered.
+*/
 var FSEND = "https://www.facebook.com/messaging/send/*"
 var FRECEIVE = "https://www.facebook.com/ajax/mercury/delivery_receipts.php*"
 var FSWITCH = "https://www.facebook.com/ajax/bz"

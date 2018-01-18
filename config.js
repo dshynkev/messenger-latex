@@ -1,3 +1,7 @@
+/*
+** This is our slimmed-down MathJax setup.
+** The major customization is downloadable image output.
+*/
 window.MathJax = {
   jax: ["input/TeX", "output/SVG"],
   extensions: ["tex2jax.js", "MathMenu.js", "MathZoom.js"],
@@ -12,7 +16,7 @@ window.MathJax = {
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js", "color.js"]
-  },
+  }
   AuthorInit: function() {
     MathJax.Hub.Register.StartupHook("End", function() {
       var mj2img = function(texstring, callback) {
