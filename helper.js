@@ -51,7 +51,9 @@ window.addEventListener("message", function(event) {
 }, false);
 
 //Ignore MathJax in input
-var currentpage = window.location.href;
-if (currentpage.includes("facebook.com/messages") || currentpage.includes("messenger.com")) {
-    var input = document.getElementsByClassName("_1mf")[0].classList.add("tex2jax_ignore");
-};
+window.addEventListener('load', function() {
+    var currentpage = window.location.href;
+    if (currentpage.includes("facebook.com/messages") || currentpage.includes("messenger.com")) {
+        var input = document.getElementsByClassName("_1mf")[0].classList.add("tex2jax_ignore");
+    }
+});

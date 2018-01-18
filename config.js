@@ -16,7 +16,7 @@ window.MathJax = {
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js", "color.js"]
-  }
+  },
   AuthorInit: function() {
     MathJax.Hub.Register.StartupHook("End", function() {
       var mj2img = function(texstring, callback) {
